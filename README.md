@@ -1,3 +1,7 @@
+*__DISCLAIMER__: Development of html2feed-lambda project is discontinued.*
+
+&nbsp;
+
 html2feed-lambda
 ========
 
