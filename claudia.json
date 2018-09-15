@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "fw-html2feed-executor",
+    "name": "fw-html2feed",
+    "region": "ap-northeast-2"
+  },
+  "api": {
+    "id": "vtc1kzke4k",
+    "module": "app"
+  }
+}
