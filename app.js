@@ -1,20 +1,18 @@
-'use strict';
-let ApiBuilder = require('claudia-api-builder');
-let api = new ApiBuilder();
-let child = require('child_process');
-let path = require('path');
+'use strict'
 
-api.get(
-  'html2feed',
-  req => {
-    let url = 'http://womenlink.or.kr/notices';
-    let processArgs = [
-      path.join(__dirname, 'phantom-script.js'),
-      url
-    ];
-    return child.spawnSync("./phantomjs_linux-x86_64", processArgs, {}).stdout.toString();
-  },
-  {success: {contentType: 'text/html'}}
-);
+const ApiBuilder = require('claudia-api-builder')
+const fetch = require('node-fetch')
+const { JSDOM } = require("jsdom");
 
-module.exports = api;
+const api = new ApiBuilder()
+api.get('html2feed', async _ => {
+  const res = await fetch('https://womenlink.or.kr/notices')
+  const html = await res.text()
+  const dom = new JSDOM(html)
+  const document = dom.window.document
+
+  return {
+    titles: [...document.querySelectorAll('.post-list-box-excerpt__title')].map(x => x.textContent.trim())
+  }
+})
+module.exports = api

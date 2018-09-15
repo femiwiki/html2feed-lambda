@@ -1,1 +1,12 @@
-{"name":"fw-html2feed","version":"1.0.0","description":"","main":"app.js","scripts":{"create":"claudia create --region ap-northeast-2 --api-module app --profile fw","update":"claudia update --profile fw"},"author":"","license":"ISC","dependencies":{"claudia-api-builder":"^2.2.0","promise":"^7.1.1"},"files":["*.js","phantomjs_linux-x86_64"]}
+{
+  "name": "fw-html2feed",
+  "version": "0.0.0",
+  "devDependencies": {
+    "claudia": "^5.1.1"
+  },
+  "dependencies": {
+    "claudia-api-builder": "^4.1.1",
+    "jsdom": "^12.0.0",
+    "node-fetch": "^2.2.0"
+  }
+}
